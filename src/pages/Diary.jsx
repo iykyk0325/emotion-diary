@@ -1,31 +1,16 @@
-import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { DiaryStateContext } from "../App";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Viewer from "../components/Viewer";
+import useDiary from "../hooks/useDiary";
 import { getStringedDate } from "../util/get-stringed-date";
 
 const Diary = () => {
   const nav = useNavigate();
   const params = useParams();
-  const data = useContext(DiaryStateContext);
 
-  const [curDiaryItem, setCurDiaryItem] = useState();
-
-  useEffect(() => {
-    const currentDiaryItem = data.find(
-      (item) => Number(item.id) === Number(params.id),
-    );
-
-    if (!currentDiaryItem) {
-      window.alert("존재하지 않는 일기입니다.");
-      nav("/", { replace: true });
-    }
-
-    setCurDiaryItem(currentDiaryItem);
-  }, [params.id]);
+  const curDiaryItem = useDiary(params.id);
 
   if (!curDiaryItem) {
     return <div>데이터 로딩 중...</div>;
