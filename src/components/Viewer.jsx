@@ -1,6 +1,6 @@
 import "./Viewer.css";
 
-import { emotionList } from "../util/constants";
+import { emotionList } from "../constants/emotion-list";
 import { getEmotionImage } from "../util/get-emotion-image";
 
 const Viewer = ({ emotionId, content }) => {

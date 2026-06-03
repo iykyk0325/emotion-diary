@@ -3,7 +3,7 @@ import "./Editor.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { emotionList } from "../util/constants";
+import { emotionList } from "../constants/emotion-list";
 import { getStringedDate } from "../util/get-stringed-date";
 import Button from "./Button";
 import EmotionItem from "./EmotionItem";
